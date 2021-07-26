@@ -17,6 +17,7 @@ export class StrokesService {
   }
 
   public async create(model: CreateStrokeDTO): Promise<Stroke> {
+    console.log(model);
     return this.strokeModel.create(model);
   }
 
@@ -24,6 +25,7 @@ export class StrokesService {
     strokeId: string,
     model: CreateStrokeDTO,
   ): Promise<Stroke> {
+    console.log(model, strokeId);
     return this.strokeModel.findByIdAndUpdate(strokeId, model, {
       new: true,
       useFindAndModify: false,

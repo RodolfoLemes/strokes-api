@@ -39,7 +39,7 @@ export class StrokesController {
   @ApiOkResponse({ description: 'Return a updated of strokes' })
   public async update(
     @Param('strokeId') strokeId: string,
-    model: CreateStrokeDTO,
+    @Body() model: CreateStrokeDTO,
   ): Promise<Stroke> {
     return this.strokesService.update(strokeId, model);
   }

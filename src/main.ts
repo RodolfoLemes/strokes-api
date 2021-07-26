@@ -28,7 +28,12 @@ async function bootstrap() {
 
   app.enableCors();
   app.use(morgan('tiny'));
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      forbidUnknownValues: true,
+      whitelist: true,
+    }),
+  );
 
   await app.listen(generalConfigs.PORT, '0.0.0.0');
 }

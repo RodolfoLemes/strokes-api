@@ -16,8 +16,8 @@ export class Stroke extends Document implements IStroke {
 
   @Prop(
     raw({
-      pt: { type: Array },
-      en: { type: Array },
+      pt: { type: [String] },
+      en: { type: [String] },
     }),
   )
   public meanings: IMeanings;
