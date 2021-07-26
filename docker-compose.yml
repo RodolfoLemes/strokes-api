@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  api:
+    container_name: stroke-api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    env_file: .env
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/home/app/src
+      - ./package.json:/home/app/package.json
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:4.2
+    ports:
+      - 27017:27017
+    volumes:
+      - ./.docker/mongo:/data/db
