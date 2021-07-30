@@ -7,6 +7,6 @@ COPY . ./
 RUN yarn && yarn cache clean
 
 EXPOSE 3000
-EXPOSE 9229
+EXPOSE 3229
 
 CMD ["yarn", "start:dev"]
