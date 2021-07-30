@@ -17,7 +17,6 @@ export class StrokesService {
   }
 
   public async create(model: CreateStrokeDTO): Promise<Stroke> {
-    console.log(model);
     return this.strokeModel.create(model);
   }
 

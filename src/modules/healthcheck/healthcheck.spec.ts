@@ -13,11 +13,11 @@ describe('AppController', () => {
   });
 
   describe('getHello', () => {
-    it('should return "Hello World!"', () => {
+    it('should return "Eu amo gatos"', () => {
       const appController = app.get<HealthcheckController>(
         HealthcheckController,
       );
-      expect(appController.getHello()).toBe('Hello World!');
+      expect(appController.getHello()).toBe('Eu amo gatos');
     });
   });
 });
