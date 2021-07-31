@@ -1,7 +1,7 @@
 import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { IStroke } from '../interfaces/stroke.interface';
-import { IMeanings } from '../interfaces/meanings.interface';
+import { ILanguage } from '../../common/interfaces/language.interface';
 
 @Schema({ timestamps: true })
 export class Stroke extends Document implements IStroke {
@@ -11,8 +11,13 @@ export class Stroke extends Document implements IStroke {
   @Prop({ required: true })
   public pinyin: string;
 
-  @Prop()
-  public origin: string;
+  @Prop(
+    raw({
+      pt: String,
+      en: String,
+    }),
+  )
+  public origin: ILanguage<string>;
 
   @Prop(
     raw({
@@ -20,7 +25,7 @@ export class Stroke extends Document implements IStroke {
       en: { type: [String] },
     }),
   )
-  public meanings: IMeanings;
+  public meanings: ILanguage<string[]>;
 }
 
 export const StrokeSchema = SchemaFactory.createForClass(Stroke);

@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { StrokesService } from '../services/strokes.service';
 import { IStroke } from '../interfaces/stroke.interface';
@@ -17,6 +18,8 @@ import {
   ApiOkResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { ListByLanguageDTO } from '../dtos/list-by-language.dto';
+import { IStrokeByLanguage } from '../interfaces/stroke-language.interface';
 
 @ApiTags('strokes')
 @Controller('strokes')
@@ -24,9 +27,19 @@ export class StrokesController {
   constructor(private strokesService: StrokesService) {}
 
   @Get()
-  @ApiOkResponse({ description: 'Return a list of strokes' })
+  @ApiOkResponse({
+    description: 'Return a list of strokes',
+  })
   public async list(): Promise<IStroke[]> {
     return this.strokesService.list();
+  }
+
+  @Get('by-language')
+  @ApiOkResponse({ description: 'Return a list of strokes by languages' })
+  public async listByLanguage(
+    @Query() query: ListByLanguageDTO,
+  ): Promise<IStrokeByLanguage[]> {
+    return this.strokesService.listByLanguage(query);
   }
 
   @Post()

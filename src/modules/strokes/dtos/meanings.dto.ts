@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsArray } from 'class-validator';
-import { IMeanings } from '../interfaces/meanings.interface';
+import { Meanings } from '../interfaces/stroke.interface';
 
-export class MeaningsDTO implements IMeanings {
+export class MeaningsDTO implements Meanings {
   @IsArray()
   @IsOptional()
   @ApiProperty({ required: true, type: [String] })

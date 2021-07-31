@@ -1,8 +1,11 @@
-import { IMeanings } from './meanings.interface';
+import { ILanguage } from '../../common/interfaces/language.interface';
+
+export type Origin = ILanguage<string>;
+export type Meanings = ILanguage<string[]>;
 
 export interface IStroke {
   symbol: string;
   pinyin: string;
-  origin: string;
-  meanings: IMeanings;
+  origin: Origin;
+  meanings: Meanings;
 }

@@ -5,10 +5,10 @@ import {
   ValidateNested,
 } from 'class-validator';
 import { Type } from 'class-transformer';
-import { IStroke } from '../interfaces/stroke.interface';
-import { MeaningsDTO } from './meanings.dto';
-import { IMeanings } from '../interfaces/meanings.interface';
 import { ApiProperty } from '@nestjs/swagger';
+import { IStroke, Meanings, Origin } from '../interfaces/stroke.interface';
+import { MeaningsDTO } from './meanings.dto';
+import { OriginDTO } from './origin.dto';
 
 export class CreateStrokeDTO implements IStroke {
   @IsNotEmpty()
@@ -22,13 +22,14 @@ export class CreateStrokeDTO implements IStroke {
   public pinyin: string;
 
   @IsOptional()
-  @IsString()
-  @ApiProperty({ required: false, type: String })
-  public origin: string;
+  @ValidateNested({ each: true })
+  @Type(() => OriginDTO)
+  @ApiProperty({ required: false, type: OriginDTO })
+  public origin: Origin;
 
   @IsOptional()
   @ValidateNested({ each: true })
   @Type(() => MeaningsDTO)
-  @ApiProperty({ required: false })
-  public meanings: IMeanings;
+  @ApiProperty({ required: false, type: MeaningsDTO })
+  public meanings: Meanings;
 }
