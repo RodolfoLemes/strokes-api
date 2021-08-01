@@ -399,3 +399,6 @@ dist
 
 # docker
 .docker
+
+## sonarqube
+.scannerwork
