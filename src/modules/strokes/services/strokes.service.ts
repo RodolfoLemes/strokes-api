@@ -48,7 +48,9 @@ export class StrokesService {
   public async delete(strokeId: string): Promise<Stroke> {
     const stroke = await this.strokeModel.findByIdAndDelete(strokeId).exec();
 
-    if (!stroke) throw new NotFoundException('stroke-not-found');
+    if (!stroke) {
+      throw new NotFoundException('stroke-not-found');
+    }
 
     return stroke;
   }

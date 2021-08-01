@@ -24,7 +24,7 @@ import { IStrokeByLanguage } from '../interfaces/stroke-language.interface';
 @ApiTags('strokes')
 @Controller('strokes')
 export class StrokesController {
-  constructor(private strokesService: StrokesService) {}
+  constructor(private readonly strokesService: StrokesService) {}
 
   @Get()
   @ApiOkResponse({

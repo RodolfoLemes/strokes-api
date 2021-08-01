@@ -5,7 +5,7 @@ import {
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { generalConfigs } from './configs/general';
+import { generalConfigs } from './configs/general.config';
 import * as morgan from 'morgan';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
