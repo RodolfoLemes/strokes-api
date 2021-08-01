@@ -20,6 +20,7 @@ import {
 } from '@nestjs/swagger';
 import { ListByLanguageDTO } from '../dtos/list-by-language.dto';
 import { IStrokeByLanguage } from '../interfaces/stroke-language.interface';
+import { SearchDTO } from '../dtos/search.dto';
 
 @ApiTags('strokes')
 @Controller('strokes')
@@ -40,6 +41,14 @@ export class StrokesController {
     @Query() query: ListByLanguageDTO,
   ): Promise<IStrokeByLanguage[]> {
     return this.strokesService.listByLanguage(query);
+  }
+
+  @Get('search')
+  @ApiOkResponse({
+    description: 'Return a list of strokes by the term query',
+  })
+  public async search(@Query() query: SearchDTO): Promise<IStroke[]> {
+    return this.strokesService.search(query);
   }
 
   @Post()

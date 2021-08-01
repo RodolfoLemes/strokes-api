@@ -60,6 +60,16 @@ describe('Strokes Service', () => {
     });
   });
 
+  describe('search', () => {
+    it('should list the stroke by query search', async () => {
+      const strokes = await strokesController.search({
+        term: 'cachorro',
+      });
+
+      expect(strokes[0].meanings.pt[0]).toBe('cachorro');
+    });
+  });
+
   describe('create', () => {
     it('should create a stroke', async () => {
       const createdStroke = await strokesController.create(strokeCat);

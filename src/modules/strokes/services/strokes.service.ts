@@ -6,6 +6,7 @@ import { Stroke } from '../schemas/stroke.schema';
 import { CreateStrokeDTO } from '../dtos/create-stroke.dto';
 import { IStrokeByLanguage } from '../interfaces/stroke-language.interface';
 import { ListByLanguageDTO } from '../dtos/list-by-language.dto';
+import { SearchDTO } from '../dtos/search.dto';
 
 @Injectable()
 export class StrokesService {
@@ -29,6 +30,15 @@ export class StrokesService {
       origin: stroke.origin[language],
       meanings: stroke.meanings[language],
     }));
+  }
+
+  public async search(query: SearchDTO): Promise<IStroke[]> {
+    return this.strokeModel
+      .find({
+        $text: { $search: query.term },
+      })
+      .limit(10)
+      .lean();
   }
 
   public async create(model: CreateStrokeDTO): Promise<Stroke> {
