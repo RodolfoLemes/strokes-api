@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsIn, IsOptional } from 'class-validator';
-import { enLanguages } from 'src/modules/common/enums/language.enums';
+import { enLanguages } from '../../common/enums/language.enums';
 
 const languages = Object.keys(enLanguages);
 

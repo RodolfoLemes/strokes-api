@@ -1,7 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { NotFoundError } from 'rxjs';
 import { IStroke } from '../interfaces/stroke.interface';
 import { Stroke } from '../schemas/stroke.schema';
 import { CreateStrokeDTO } from '../dtos/create-stroke.dto';
@@ -25,13 +24,11 @@ export class StrokesService {
 
     const { language } = query;
 
-    const strokesByLanguage: IStrokeByLanguage[] = strokes.map((stroke) => ({
+    return strokes.map((stroke) => ({
       ...stroke,
       origin: stroke.origin[language],
       meanings: stroke.meanings[language],
     }));
-
-    return strokesByLanguage;
   }
 
   public async create(model: CreateStrokeDTO): Promise<Stroke> {
@@ -49,9 +46,9 @@ export class StrokesService {
   }
 
   public async delete(strokeId: string): Promise<Stroke> {
-    const stroke = await this.strokeModel.findByIdAndDelete(strokeId);
+    const stroke = await this.strokeModel.findByIdAndDelete(strokeId).exec();
 
-    if (!stroke) throw new NotFoundError('stroke-not-found');
+    if (!stroke) throw new NotFoundException('stroke-not-found');
 
     return stroke;
   }
