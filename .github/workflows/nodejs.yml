@@ -26,7 +26,6 @@ jobs:
         run: |
           yarn install
           yarn test:cov
-          yarn test:e2e
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
