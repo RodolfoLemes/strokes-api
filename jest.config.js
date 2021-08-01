@@ -24,7 +24,7 @@ module.exports = {
   coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
-  coveragePathIgnorePatterns: ['/node_modules/', 'src/modules/strokes'],
+  coveragePathIgnorePatterns: ['/node_modules/'],
 
   // A list of reporter names that Jest uses when writing coverage reports
   coverageReporters: ['text-summary', 'lcov'],
@@ -51,7 +51,7 @@ module.exports = {
   // globals: {},
 
   // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
-  // maxWorkers: "50%",
+  maxWorkers: 4,
 
   // An array of directory names to be searched recursively up from the requiring module's location
   // moduleDirectories: [
@@ -138,7 +138,7 @@ module.exports = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ['**/*.spec.ts'],
+  testMatch: ['**/*.spec.ts', '**/*.e2e-spec.ts'],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
