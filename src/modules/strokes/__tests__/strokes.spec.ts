@@ -61,9 +61,17 @@ describe('Strokes Service', () => {
   });
 
   describe('search', () => {
-    it('should list the stroke by query search', async () => {
+    it('should list the strokes by query search', async () => {
       const strokes = await strokesController.search({
         term: 'cachorro',
+      });
+
+      expect(strokes[0].meanings.pt[0]).toBe('cachorro');
+    });
+
+    it('should list the strokes by partial query', async () => {
+      const strokes = await strokesController.search({
+        term: 'cachor',
       });
 
       expect(strokes[0].meanings.pt[0]).toBe('cachorro');

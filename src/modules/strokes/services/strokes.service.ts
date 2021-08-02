@@ -33,12 +33,29 @@ export class StrokesService {
   }
 
   public async search(query: SearchDTO): Promise<IStroke[]> {
-    return this.strokeModel
+    let strokes: IStroke[];
+
+    strokes = await this.strokeModel
       .find({
-        $text: { $search: query.term },
+        $text: { $search: query.term, $caseSensitive: false },
       })
       .limit(10)
       .lean();
+
+    if (!strokes.length) {
+      strokes = await this.strokeModel
+        .find({
+          $or: [
+            { pinyin: new RegExp(query.term, 'gi') },
+            { 'meanings.pt': new RegExp(query.term, 'gi') },
+            { 'meanings.en': new RegExp(query.term, 'gi') },
+          ],
+        })
+        .limit(10)
+        .lean();
+    }
+
+    return strokes;
   }
 
   public async create(model: CreateStrokeDTO): Promise<Stroke> {
