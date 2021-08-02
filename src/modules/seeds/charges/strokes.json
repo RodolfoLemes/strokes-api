@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "高",
+    "pinyin": "Gāo",
+    "meanings": {
+      "pt": ["Alto", "lugar alto"],
+      "en": ["Tall", "high", "high place"]
+    },
+    "origin": {
+      "pt": "Parece com a figura de um prédio, dando a ideia de algo alto.",
+      "en": "Looks like a picture of a building, giving the idea of something high"
+    }
+  },
+  {
+    "symbol": "中",
+    "pinyin": "Zhōng",
+    "meanings": {
+      "pt": ["Meio", "centro", "médio", "intermediário"],
+      "en": ["Middle", "center", "medium", "intermediary"]
+    },
+    "origin": {
+      "pt": "Parece um mastro de bandeira. Com base em evidências arqueológicas, a caixa do meio foi interpretada como um tambor. Este mastro com um tambor foi colocado no centro de um campo para reunir pessoas e detectar a direção do vento. Além disso, a pronúncia de 中 lembra a batida de um tambor.",
+      "en": "Looks like a flagpole. Based on archaeological evidence, the middle box has been interpreted as a drum. This flagpole with a drum was placed in the center of a field to gather people and to detect the direction of the wind. In addition, the pronunciation of 中 is reminiscent of the beating of a drum."
+    }
+  },
+  {
+    "symbol": "日",
+    "pinyin": "Rì",
+    "meanings": {
+      "pt": ["Sol", "dia", "tempo"],
+      "en": ["Sun", "day", "time"]
+    },
+    "origin": {
+      "pt": "Representa o sol. A linha no meio foi adicionada no centro para distinguí-lo de outros caracteres semelhantes.",
+      "en":  "Represents the sun. The line in the middle was added in the centre to distinguish it from other visually similar characters."
+    }
+  }
+]
