@@ -8,4 +8,5 @@ export interface IStroke {
   pinyin: string;
   origin: Origin;
   meanings: Meanings;
+  file: string;
 }

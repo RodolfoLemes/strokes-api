@@ -22,6 +22,9 @@ export class Stroke extends Document implements IStroke {
 
   @Prop({ type: Meanings })
   public meanings: Meanings;
+
+  @Prop()
+  public file: string;
 }
 
 export const StrokeSchema = SchemaFactory.createForClass(Stroke);

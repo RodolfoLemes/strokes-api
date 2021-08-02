@@ -32,4 +32,9 @@ export class CreateStrokeDTO implements IStroke {
   @Type(() => MeaningsDTO)
   @ApiProperty({ required: false, type: MeaningsDTO })
   public meanings: Meanings;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty({ required: false, type: String })
+  public file: string;
 }

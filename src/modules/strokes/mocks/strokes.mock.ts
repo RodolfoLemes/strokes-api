@@ -9,6 +9,7 @@ export const strokeDog = {
     pt: ['cachorro'],
     en: ['dog'],
   },
+  file: 'file-dog',
 };
 
 export const strokeCat = {
@@ -22,4 +23,5 @@ export const strokeCat = {
     pt: ['gato'],
     en: ['cat'],
   },
+  file: 'file-cat',
 };

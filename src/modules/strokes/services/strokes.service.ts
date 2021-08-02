@@ -40,7 +40,8 @@ export class StrokesService {
         $text: { $search: query.term, $caseSensitive: false },
       })
       .limit(10)
-      .lean();
+      .lean()
+      .exec();
 
     if (!strokes.length) {
       strokes = await this.strokeModel
@@ -52,7 +53,8 @@ export class StrokesService {
           ],
         })
         .limit(10)
-        .lean();
+        .lean()
+        .exec();
     }
 
     return strokes;
