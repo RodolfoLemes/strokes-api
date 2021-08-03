@@ -13,7 +13,9 @@ export class StrokesSeed {
   public async execute(): Promise<void> {
     const hasStrokes = await this.strokeModel.countDocuments({}).exec();
 
-    if (hasStrokes) return;
+    if (hasStrokes) {
+      return;
+    }
 
     await Promise.all(strokes.map((stroke) => this.strokeModel.create(stroke)));
   }
